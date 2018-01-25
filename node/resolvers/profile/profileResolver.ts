@@ -1,6 +1,6 @@
 import http from 'axios'
 import {parse as parseCookie} from 'cookie'
-import {readJson} from 'fs-promise'
+import {readJson} from 'fs-extra'
 import {join} from 'path'
 import {head, merge, path, pickBy, pipe, prop, values} from 'ramda'
 import ResolverError from '../../errors/resolverError'

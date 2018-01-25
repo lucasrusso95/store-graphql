@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
 import {IOContext} from 'colossus'
-import {GraphqlRequestBody} from 'graphql'
+import {GraphqlRequestBody} from 'graphqlx'
 import paths from '../paths'
 import ResolverError from '../../errors/resolverError'
 import {map, find, equals, prop, compose} from 'ramda'
@@ -43,11 +43,12 @@ export default {
     const url = paths.brand(ioContext.account)
     const {data: brands} = await axios.get(url, {headers: withAuthToken()(ioContext, cookie) })
 
-    const brand = find(compose(equals(data.id), prop('id')), brands)
+    const brand = find(compose(equals(data.id), prop('id')), brands) as {name: string, isActive: boolean, id: string}
     if (!brand) {
       throw new ResolverError(`Brand with id ${data.id} not found`, 404)
     }
-    return {data: resolveBrandFields(brand)}
+    const resolvedBrand = resolveBrandFields(brand)
+    return {data: resolvedBrand}
   },
 
   category: async ({data, fields, cookie}: GraphqlRequestBody, ioContext: IOContext) => {

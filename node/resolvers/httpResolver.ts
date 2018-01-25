@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
 import {IOContext} from 'colossus'
-import {GraphqlRequestBody} from 'graphql'
+import {GraphqlRequestBody} from 'graphqlx'
 import {map, prop} from 'ramda'
 import * as parse from 'url-parse'
 

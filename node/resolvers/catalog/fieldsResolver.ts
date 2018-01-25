@@ -1,8 +1,8 @@
 import axios from 'axios'
 import {IOContext} from 'colossus'
 import {compose, evolve, juxt, map, omit, path, pick, prop, propOr, toPairs, assoc, last, split} from 'ramda'
+import slugify from 'slugify'
 import paths from './../paths'
-import * as slugify from 'slugify'
 import {resolveBuy, resolveView} from './recommendationsResolver'
 
 const knownNotPG = [
@@ -36,18 +36,18 @@ const resolvers = {
     return objToNameValue('name', 'values', omit(notPG, product))
   },
 
-  properties: (product) => {
+  properties: (product: any) => {
     const {allSpecifications=[]} = product
-    return map(name => ({name, values: product[name]}), allSpecifications)
+    return map((name: string) => ({name, values: product[name]}), allSpecifications)
   },
 
   variations: (sku) => {
     const {variations=[]} = sku
-    return map(name => ({name, values: sku[name]}), variations)
+    return map((name: string) => ({name, values: sku[name]}), variations)
   },
 
   attachments: (sku) => {
-    return map(attachment => ({
+    return map((attachment: any)=> ({
       ...attachment,
       domainValues: JSON.parse(attachment.domainValues)
     }), sku.attachments || [])
@@ -102,9 +102,9 @@ export const resolveCategoryFields = (category) => ({
   hasChildren: category.hasChildren
 })
 
-export const resolveBrandFields = (brand) => ({
+export const resolveBrandFields = (brand: {name: string, isActive: boolean, id: string}) => ({
+  active: brand.isActive,
   id: brand.id,
   name: brand.name,
-  active: brand.isActive,
   slug: slugify(brand.name, {lower: true})
 })

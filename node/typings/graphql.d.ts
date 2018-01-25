@@ -1,4 +1,4 @@
-declare module 'graphql' {
+declare module 'graphqlx' {
 import {ColossusContext} from 'colossus'
 
   interface GraphqlResponse {
