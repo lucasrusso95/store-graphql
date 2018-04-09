@@ -64,6 +64,8 @@ const paths = {
   sendEmailVerification: (email, token) => `http://vtexid.vtex.com.br/api/vtexid/pub/authentication/accesskey/send?authenticationToken=${token}&email=${email}`,
 
   signIn: (email, token, code) => `http://vtexid.vtex.com.br/api/vtexid/pub/authentication/accesskey/validate?authenticationToken=${token}&login=${email}&accesskey=${code}`,
+
+  whoSawAlsoBouht: (account, productId) => `http://${account}.vtexcommercestable.com.br/api/catalog_system/pub/products/crossselling/whosawalsobought/${productId}`
 }
 
 export default paths

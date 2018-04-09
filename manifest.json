@@ -86,6 +86,13 @@
         "host": "portal.vtexcommercestable.com.br",
         "path": "/buscaautocomplete"
       }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "boticario.vtexcommercestable.com.br",
+        "path": "/api/catalog_system/pub/products/crossselling/*"
+      }
     }
   ]
 }

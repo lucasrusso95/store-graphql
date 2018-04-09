@@ -28,7 +28,7 @@ type Query {
 
   autocomplete(maxRows: Int = 12, searchTerm: String): Suggestions
 
-  whoSawAlsoBought(searchTerm: String): SearchResults
+  whoSawAlsoBought(productId: Int): [Product]
 }
 
 type Mutation {
