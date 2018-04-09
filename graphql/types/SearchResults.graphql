@@ -1,0 +1,13 @@
+type SearchResults {
+  results: [SearchResult]
+}
+
+type SearchResult {
+  productId: Int
+  productName: String
+  brand: String
+  productReference: String
+  categoryId: Int
+  categories: [String]
+  description: String
+}
